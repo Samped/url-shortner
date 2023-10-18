@@ -45,6 +45,10 @@ router.get('/:short', async(req, res) => {
                 shortUrl: shortId
             }
         });
+        if(!Url) {
+           return res.status(404).send("Invalid short Url");
+        }
+        return res.redirect(Url.longUrl)
 
     } catch (e) {
         return res.status(500).send(e);
